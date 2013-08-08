@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html ng-app="gridApp">
+
+  <head lang="en">
+    <meta charset="utf-8">
+    <title>Grid application</title>
+
+    <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+
+  </head>
+
+  <body>
+    <div class="container" ng-controller="MainCtrl">
+
+      <div ng-controller="GridCtrl" ng-repeat="gridId in gridIds">
+        <div class="row">
+          <label class="span2">Набор данных</label>
+
+          <div class="span2">
+            <label class="radio">
+              <input type="radio" ng-model="dataType" ng-click="switchDataType()" name="data-set" class="data-set" value="large">
+              Большой
+            </label>
+          </div>
+
+          <div class="span2">
+            <label class="radio">
+              <input type="radio" ng-model="dataType" ng-click="switchDataType()" name="data-set" class="data-set" value="small">
+              Маленький
+            </label>
+          </div>
+
+          <div class="span2">
+            <label class="radio">
+              <input type="radio" ng-model="dataType" ng-click="switchDataType()" name="data-set" class="data-set" value="custom">
+              Свой
+            </label>
+          </div>
+
+        </div>
+        <!-- Директива grid -->
+        <grid head="head" rows="rows" page-size="50"></grid>
+        <div class="alert alert-error hidden" ng-show="errorMessage">{{errorMessage}}</div>
+
+      </div>
+
+      <button class="btn btn-primary" ng-click="addGrid()">Добавить таблицу</button>
+
+    </div>
+
+
+    <script src="js/utils.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.4/angular.min.js"></script>
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+
+    <script src="js/bootstrap.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/services.js"></script>
+    <script src="js/controllers.js"></script>
+    <script src="js/directives.js"></script>
+    <script src="js/filters.js"></script>
+</body>
+</html>
+

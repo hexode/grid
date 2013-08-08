@@ -1,0 +1,44 @@
+<div class="grid-container" ng-show="rows.length">
+  <div class="pagination pull-left" >
+    <ul>
+      <li><a href="#" ng-click="prev()" ng-class="getPrevClass()">Назад</a></li>
+
+      <li ng-repeat="page in getPages()" ng-class="getPaginationClass(page)" ng-click="selectPage(page)">
+        <a href="#">{{page}}</a>
+      </li>
+
+      <li><a href="#" ng-click="next()" ng-class="getNextClass()">Вперед</a></li>
+    </ul>
+  </div>
+
+
+
+  <div class="grid__filter pull-right">
+    <input type="text" placeholder="Фильтр" ng-model="filterValue">
+  </div>
+
+
+
+  <table class="table table-bordered grid">
+    <thead>
+      <tr class="grid__head">
+        <th class="grid__title" ng-click='selectOrderProp(cell.name)' ng-repeat="cell in head">
+          <span>{{cell.title}}<i class="grid__sort {{getIconSortClass(cell.name)}} pull-right"></i></span>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+          ng-repeat="row in rows | startFrom: (( currentPage -1 ) * pageSize) | limitTo:pageSize | orderBy:getSortProp:orderReverse | filter: filterValue"
+          ng-click ="selectRow(row)"
+          >
+        <td ng-repeat="cell in row">{{cell.value}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="row-info">
+  <strong ng-show="selectedRow">Выбрано: </strong>
+  <span ng-repeat="cell in selectedRow">{{cell.value}} </span>
+</div>

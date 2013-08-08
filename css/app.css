@@ -1,0 +1,25 @@
+body {
+  padding-bottom: 50px;
+}
+
+[class*=" icon-"] {
+  line-height: inherit!important;
+}
+.grid .grid__title {
+  text-align: center;
+}
+.grid .grid__title:hover {
+  background-color: #ddd;
+}
+.grid tr:hover {
+  background-color: #eee;
+}
+
+.grid .grid__title {
+  white-space: nowrap;
+}
+
+grid .grid__filter {
+  margin: 20px 0;
+}
+
